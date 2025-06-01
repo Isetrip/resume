@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaroslav Peretiatko | Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #ff6b35;
+            --secondary: #004e89;
+            --accent: #ffd23f;
+            --dark: #1a1a1f;
+            --darker: #0f0f14;
+            --light: #ffffff;
+            --gray: #8892b0;
+            --card-bg: #1e1e23;
+            --sidebar-bg: #16161c;
+            --gradient-1: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-2: linear-gradient(135deg, #ff6b35 0%, #004e89 100%);
+            --gradient-3: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            --shadow: 0 20px 40px rgba(0,0,0,0.5);
+            --glow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-1);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--light);
+        }
+        
+        /* Store ambiance effect */
+        #ambiance-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Animated background shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: morphing 12s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary)22, transparent 70%);
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--secondary)22, transparent 70%);
+            animation-delay: 4s;
+        }
+        
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--accent)22, transparent 70%);
+            animation-delay: 8s;
+        }
+        
+        @keyframes morphing {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                border-radius: 50%;
+            }
+            25% { 
+                transform: scale(1.3) rotate(90deg);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            50% { 
+                transform: scale(0.7) rotate(180deg);
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+            75% { 
+                transform: scale(1.1) rotate(270deg);
+                border-radius: 30% 70% 30% 70% / 70% 30% 70% 30%;
+            }
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .resume-container {
+            background: var(--card-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: slideIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(100px) scale(0.9);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Header section with professional effect */
+        .header {
+            background: var(--gradient-2);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 107, 53, 0.03) 2px,
+                rgba(255, 107, 53, 0.03) 4px
+            );
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .name-section h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--light);
+            margin-bottom: 10px;
+            text-shadow: var(--glow);
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            from { text-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.3); }
+        }
+        
+        .name-section p {
+            font-size: 1.4rem;
+            color: var(--gray);
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(40) infinite;
+        }
+        
+        @keyframes typing {
+            0%, 50%, 100% { width: 100%; }
+            25%, 75% { width: 0; }
+        }
+        
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 53, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Interactive 3D profile visual */
+        .profile-visual {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--light);
+            animation: rotate 8s linear infinite;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-visual:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 107, 53, 0.5);
+        }
+        
+        .profile-visual::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            z-index: -1;
+            animation: spin 4s linear infinite reverse;
+            filter: blur(8px);
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Main content area */
+        .main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 800px;
+        }
+        
+        /* Dark sidebar */
+        .sidebar {
+            background: var(--sidebar-bg);
+            padding: 40px 30px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 40px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .sidebar-title::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            animation: blink 2s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        /* Skill visualization with bars */
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateX(5px);
+            box-shadow: var(--glow);
+        }
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        
+        .skill-item:hover::before {
+            width: 100%;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .skill-percentage {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            animation: fillProgress 2s ease-out;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        @keyframes fillProgress {
+            from { width: 0%; }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Glowing contact section */
+        .contact-info {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 78, 137, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            color: var(--light);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            animation: rotate 6s linear infinite;
+            z-index: -1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+        }
+        
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Content area */
+        .content {
+            padding: 40px;
+            background: var(--card-bg);
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .content-section:nth-child(1) { animation-delay: 0.2s; }
+        .content-section:nth-child(2) { animation-delay: 0.4s; }
+        .content-section:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* Cool professional-style experience section */
+        .experience-professional {
+            background: var(--darker);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .professional-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .professional-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .red { background: var(--primary); }
+        .yellow { background: var(--accent); }
+        .blue { background: var(--secondary); }
+        
+        .professional-title {
+            margin-left: 10px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .professional-content {
+            position: relative;
+        }
+        
+        .experience-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .job-period {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .job-title-professional {
+            color: var(--light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .job-company-professional {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .job-description {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .job-achievements {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .job-achievements li {
+            color: var(--light);
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .job-achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light);
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, var(--primary) 0%, var(--primary) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 90%;
+            font-weight: 600;
+            color: var(--light);
+            padding: 2px 4px;
+            border-radius: 4px;
+            background-color: rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Languages section */
+        .language-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-item:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .language-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .language-level {
+            background: var(--primary);
+            color: var(--light);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Easter egg - hidden surprise */
+        #easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--darker);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            z-index: 1000;
+            display: none;
+            text-align: center;
+        }
+        
+        #easter-egg.show {
+            display: block;
+            animation: popIn 0.5s ease;
+        }
+        
+        @keyframes popIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        .surprise-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .surprise-message {
+            color: var(--light);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .close-surprise {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .close-surprise:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .profile-visual {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .content, .sidebar {
+                padding: 20px;
+            }
+            
+            .name-section h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="ambiance-canvas"></canvas>
+    
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="container">
+        <div class="resume-container">
+            <div class="header">
+                <div class="header-content">
+                    <div class="name-section">
+                        <h1>Yaroslav Peretiatko</h1>
+                        <p class="typing-effect">Manager • DJ • Organizátor</p>
+                        <div class="location">
+                            📍 Bratislava, Slovakia
+                        </div>
+                    </div>
+                    <div class="profile-visual" onclick="showEasterEgg()">
+                        🏪
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Profesionálne zručnosti</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Vedení tímu</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Organizácia práce</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Práca s POS systémom</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Správa inventára</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Google Workspace</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Mäkké zručnosti</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Komunikácia</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Riešenie problémov</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Práca pod tlakom</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Adaptabilita</span>
+                                    <span class="skill-percentage">100%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 100%;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Jazyky</h3>
+                        <div class="language-item">
+                            <div class="language-name">
+                                <span>🇺🇦</span>
+                                <span>Ukrajinčina</span>
+                            </div>
+                            <div class="language-level">C2</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">
+                                <span>🇷🇺</span>
+                                <span>Ruština</span>
+                            </div>
+                            <div class="language-level">C2</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">
+                                <span>🇸🇰</span>
+                                <span>Slovenčina</span>
+                            </div>
+                            <div class="language-level">B2-C1</div>
+                        </div>
+                        <!-- Вставить после последнего language-item в секции языков -->
+                        <div class="language-item">
+                            <div class="language-name">
+                                <span>🇬🇧</span>
+                                <span>Angličtina</span>
+                            </div>
+                            <div class="language-level">B1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Kontakt</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <span>yaroslav.peretiatko@example.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <span>+421 XXX XXX XXX</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">💼</div>
+                                <span>LinkedIn profil</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div class="content-section">
+                        <h2 class="section-title">O mne</h2>
+<p class="about-text">
+    Som <span class="highlight">Yaroslav Peretiatko</span>, pochádzam z Ukrajiny a už tri roky žijem na Slovensku. 
+    Študujem na Slovenskej technickej univerzite (STU), fakulta elektrotechniky a informatiky, 
+    odbor informačné a komunikačné technológie. Posledné dva roky pracujem v oblasti gastronómie 
+    ako <span class="highlight">barman, shisha master, organizátor podujatí, DJ, kuchár a barback</span>. 
+    Táto práca mi dala silné komunikačné zručnosti, schopnosť zvládať stres, preberať zodpovednosť 
+    a <span class="highlight">riadiť zmeny</span>.
+</p>
+<p class="about-text">
+    Mám bohaté skúsenosti s <span class="highlight">neziskovými projektmi</span>, kde som sa venoval 
+    organizácii, koordinácii a teamovej práci. Som iniciatívny, rýchlo sa učím a rád nachádzam 
+    a realizujem nové nápady. Zaujímam sa o technológie a programujem - ovládam základy 
+    <span class="highlight">HTML, CSS, Java</span>, aktivne pracujem s Google Sheets, Docs a Forms. 
+    Nechcem pracovať ako programátor na plný úväzok, ale svoje technické znalosti veľmi rád využívam 
+    pri <span class="highlight">vlastných projektoch a kreatívnych iniciatívach</span>. Viem efektívne pracovať 
+    s <span class="highlight">pokladňou, evidovať tovar</span>, udržiavať poriadok v priestore a organizovať 
+    pracovné procesy tak, aby všetko fungovalo lepšie pre zákazníkov aj tím.
+</p>
+<p class="about-text">
+    Som <span class="highlight">pozorný na detaily</span> a vždy sa snažím, aby všetko fungovalo 
+    na najvyššej úrovni. Moja multikultúrna skúsenosť a jazykové znalosti mi umožňujú efektívne 
+    komunikovať s rôznymi ľuďmi a vytvárať pozitívnu atmosféru v tíme.
+</p>
+
+                    </div>
+                    
+                    <div class="content-section">
+                        <h2 class="section-title">Pracovné skúsenosti</h2>
+                        <div class="experience-professional">
+                            <div class="professional-header">
+                                <div class="professional-dot red"></div>
+                                <div class="professional-dot yellow"></div>
+                                <div class="professional-dot blue"></div>
+                                <span class="professional-title">career_path.exe</span>
+                            </div>
+                            <div class="professional-content">
+                                <div class="experience-block">
+                                    <div class="job-period">2022 - súčasnosť</div>
+                                    <div class="job-title-professional">Barman / DJ / Organizátor podujatí</div>
+                                    <div class="job-company-professional">Rôzne gastronomické zariadenia a kluby, Bratislava</div>
+                                    <div class="job-description">
+                                        Multifunkčná práca v gastronómii a zábavnom priemysle, zahŕňajúca obsluhu hostí, 
+                                        prípravu nápojov, shishe, DJ sety, organizáciu podujatí a koordináciu tímovej práce.
+                                    </div>
+                                    <ul class="job-achievements">
+                                        <li>Riadenie zmien a koordinácia práce týmu až 10 členov</li>
+                                        <li>DJ vystúpenia na podujatiach pre 100+ hostí</li>
+                                        <li>Práca s profesionálnou audio technikou a mixpultmi</li>
+                                        <li>Príprava širokej škály nápojov a кальянов</li>
+                                        <li>Práca s POS systémami a komplexná správa inventára</li>
+                                        <li>Organizácia a vedenie tematických podujatí</li>
+                                        <li>Riešenie konfliktných situácií a crisis management</li>
+                                        <li>Udržiavanie vysokých štandardov kvality a čistoty</li>
+                                        <li>Práca v kuchyni ako kuchár a barback</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="experience-block">
+                                    <div class="job-period">2021 - 2022</div>
+                                    <div class="job-title-professional">Koordinátor projektov</div>
+                                    <div class="job-company-professional">Neziskové organizácie, Ukrajina/Slovensko</div>
+                                    <div class="job-description">
+                                        Organizácia a koordinácia rôznych projektov, práca s dobrovoľníkmi a tímová spolupráca.
+                                    </div>
+                                    <ul class="job-achievements">
+                                        <li>Koordinácia tímov až 15 ľudí</li>
+                                        <li>Plánovanie a realizácia projektov</li>
+                                        <li>Komunikácia s partnermi a sponzormi</li>
+                                        <li>Vytvorenie a vedenie dokumentácie projektov</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="experience-block">
+                                    <div class="job-period">2020 - 2021</div>
+                                    <div class="job-title-professional">IT Študent / Web Developer</div>
+                                    <div class="job-company-professional">Freelance projekty a štúdium</div>
+                                    <div class="job-description">
+                                        Začiatky v oblasti IT, práca na web projektoch, automatizácia procesov 
+                                        a hlboké osvojenie Google Workspace nástrojov.
+                                    </div>
+                                    <ul class="job-achievements">
+                                        <li>Programovanie v HTML, CSS, Java - od základov po pokročilé koncepty</li>
+                                        <li>Expertná práca s Google Workspace (Sheets, Docs, Forms)</li>
+                                        <li>Tvorba komplexných webových stránok a aplikácií</li>
+                                        <li>Automatizácia business procesov pomocou Google Apps Script</li>
+                                        <li>Tvorba interaktívnych formulárov a reportov</li>
+                                        <li>Optimalizácia workflow pre malé firmy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h2 class="section-title">Vzdelanie</h2>
+                        <div class="experience-professional">
+                            <div class="professional-header">
+                                <div class="professional-dot red"></div>
+                                <div class="professional-dot yellow"></div>
+                                <div class="professional-dot blue"></div>
+                                <span class="professional-title">education.log</span>
+                            </div>
+                            <div class="professional-content">
+                                <div class="experience-block">
+                                    <div class="job-period">2022 - súčasnosť</div>
+                                    <div class="job-title-professional">Bakalárske štúdium</div>
+                                    <div class="job-company-professional">Slovenská technická univerzita (STU)</div>
+                                    <div class="job-description">
+                                        Fakulta elektrotechniky a informatiky, odbor Informačné a komunikačné technológie
+                                    </div>
+                                    <ul class="job-achievements">
+                                        <li>Štúdium programovania a informačných systémov</li>
+                                        <li>Projektová práca a tímová spolupráca</li>
+                                        <li>Analytické myslenie a riešenie problémov</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Easter egg popup -->
+    <div id="easter-egg">
+        <div class="surprise-title">🎉 Prekvapenie!</div>
+        <div class="surprise-message">
+            Ďakujem, že ste sa pozreli na moje CV!<br>
+            Som pripravený priniesť do vášho tímu energiu, 
+            zodpovednosť a nové nápady! 🚀
+        </div>
+        <button class="close-surprise" onclick="hideEasterEgg()">Zavrieť</button>
+    </div>
+    
+    <script>
+        // Animated background particles
+        const canvas = document.getElementById('ambiance-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 3 + 1,
+                opacity: Math.random() * 0.5 + 0.2
+            });
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                
+                if (particle.x < 0 || particle.x > canvas.width) particle.vx = -particle.vx;
+                if (particle.y < 0 || particle.y > canvas.height) particle.vy = -particle.vy;
+                
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 107, 53, ${particle.opacity})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Easter egg functions
+        function showEasterEgg() {
+            document.getElementById('easter-egg').classList.add('show');
+        }
+        
+        function hideEasterEgg() {
+            document.getElementById('easter-egg').classList.remove('show');
+        }
+        
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
